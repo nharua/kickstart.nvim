@@ -189,6 +189,11 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<S-Up>', ':m-2<CR>', { desc = 'Move line up one row in normal mode' })
+vim.keymap.set('n', '<S-Down>', ':m+<CR>', { desc = 'Move line down one row in normal mode' })
+vim.keymap.set('i', '<S-Up>', '<Esc>:m-2<CR>', { desc = 'Move line up one row in insert mode' })
+vim.keymap.set('i', '<S-Down>', '<Esc>:m+<CR>', { desc = 'Move line down one row in insert mode' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
