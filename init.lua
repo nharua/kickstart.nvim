@@ -156,6 +156,9 @@ vim.opt.scrolloff = 10
 -- Nvimtree
 vim.keymap.set('n', '<leader>f', ':Neotree toggle<cr>')
 
+-- Nvim TODO
+vim.keymap.set('n', '<leader>t', ':TodoTelescope<cr>')
+
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
