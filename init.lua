@@ -603,6 +603,7 @@ require('lazy').setup({
         'mypy',
         'ruff',
         'black',
+        'isort',
         'verible', -- Used to format verilog and systemverilog
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
