@@ -599,6 +599,8 @@ require('lazy').setup({
         'pyright', -- Used to format python code
         'mypy',
         'ruff',
+        'black',
+        'verible', -- Used to format verilog and systemverilog
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -643,6 +645,7 @@ require('lazy').setup({
     config = function()
       local null_ls = require 'null-ls'
       source = {
+        null_ls.builtins.formatting.black,
         null_ls.builtins.diagnostics.mypy,
         null_ls.builtins.diagnostics.ruff,
       }
