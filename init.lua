@@ -616,6 +616,13 @@ require('lazy').setup({
           end,
         },
       }
+
+      require('lspconfig').verible.setup {
+        cmd = { 'verible-verilog-ls', '--rules_config_search' },
+        root_dir = function()
+          return vim.loop.cwd()
+        end,
+      }
     end,
   },
 
