@@ -542,7 +542,6 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         pyright = {
-          on_attach = on_attach,
           capabilities = capabilities,
           filetypes = { 'python' },
         },
@@ -598,6 +597,8 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
         'pyright', -- Used to format python code
+        'mypy',
+        'ruff',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -634,6 +635,18 @@ require('lazy').setup({
         -- javascript = { { "prettierd", "prettier" } },
       },
     },
+  },
+
+  { -- Linking and diagnostics
+    'jose-elias-alvarez/null-ls.nvim',
+    ft = { 'python' },
+    config = function()
+      local null_ls = require 'null-ls'
+      source = {
+        null_ls.builtins.diagnostics.mypy,
+        null_ls.builtins.diagnostics.ruff,
+      }
+    end,
   },
 
   { -- Autocompletion
