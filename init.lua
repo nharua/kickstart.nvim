@@ -169,6 +169,26 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+-- Command to toggle inline diagnostics
+vim.api.nvim_create_user_command('DiagnosticsToggleVirtualText', function()
+  local current_value = vim.diagnostic.config().virtual_text
+  if current_value then
+    vim.diagnostic.config { virtual_text = false }
+  else
+    vim.diagnostic.config { virtual_text = true }
+  end
+end, {})
+
+-- Command to toggle diagnostics
+vim.api.nvim_create_user_command('DiagnosticsToggle', function()
+  local current_value = vim.diagnostic.is_disabled()
+  if current_value then
+    vim.diagnostic.enable()
+  else
+    vim.diagnostic.disable()
+  end
+end, {})
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -622,7 +642,8 @@ require('lazy').setup({
       }
 
       require('lspconfig').verible.setup {
-        cmd = { 'verible-verilog-ls', '--rules_config_search' },
+        -- cmd = { 'verible-verilog-ls', '--rules_config_search' },
+        cmd = { 'verible-verilog-ls' },
         root_dir = function()
           return vim.loop.cwd()
         end,
