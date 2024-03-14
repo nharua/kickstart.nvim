@@ -643,7 +643,7 @@ require('lazy').setup({
 
       require('lspconfig').verible.setup {
         -- cmd = { 'verible-verilog-ls', '--rules_config_search' },
-        cmd = { 'verible-verilog-ls' },
+        cmd = { 'verible-verilog-ls', '--rules_config', '~/.config/nvim/' },
         root_dir = function()
           return vim.loop.cwd()
         end,
