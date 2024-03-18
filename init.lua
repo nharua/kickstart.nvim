@@ -844,9 +844,9 @@ require('lazy').setup({
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'python' },
+        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'python', 'verilog' },
         -- Autoinstall languages that are not installed
-        auto_install = true,
+        auto_install = false,
         highlight = { enable = true },
         indent = { enable = true },
       }
